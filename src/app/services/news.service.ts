@@ -13,7 +13,7 @@ import { Observable } from "rxjs";
 //   sports
 //   technology
 // }
-// https://saurav.tech/NewsAPI/top-headlines/category/technology/us.json
+// EX: https://saurav.tech/NewsAPI/top-headlines/category/technology/us.json
 
 // https://saurav.tech/NewsAPI/everything/<source_id>.json
 // sources: {
@@ -22,7 +22,7 @@ import { Observable } from "rxjs";
 //   fox-news
 //   google-news
 // }
-// 'https://saurav.tech/NewsAPI/everything/fox-news.json'
+// EX: https://saurav.tech/NewsAPI/everything/fox-news.json
 
 
 @Injectable({
@@ -32,14 +32,20 @@ export class NewsService {
 
   constructor(private http: HttpClient) {}
 
-  // get top Articles 
-  getTopArticles(): Observable<any> {
-    var url = 'https://saurav.tech/NewsAPI/everything/fox-news.json';
+  // get top Articles by source (see list) 
+  getArticlesBysource(source: string): Observable<any> {
+    const url = `https://saurav.tech/NewsAPI/everything/${source}.json`;
     return this.http.get(url)
       .pipe(catchError((error:any) => error));
   }
 
-  // get Articles by category 
+  // get Articles by category (see list) 
+  getArticlesByCategory(category: string): Observable<any> {
+    const url = `https://saurav.tech/NewsAPI/top-headlines/category/${category}/us.json`;
+    return this.http.get(url)
+      .pipe(catchError((error:any) => error));
+  }
+
 
   // get Articles by country (see list) 
 

@@ -1,0 +1,47 @@
+@import '../../../SCSS/index.scss';
+
+.top-stories {
+  display: flex;
+  position: relative;
+  color: #fff;
+  padding: 0.5rem 1rem;
+  height: 25rem;
+  border-radius: 1rem;
+  box-shadow: 
+    1px 1px 0px 0px #fff, 
+    6px 6px 12px 6px $box-shadow-color, 
+    inset 1px 1px 0px 0px #ffffff73, 
+    inset 1px 1px 8px 4px #000, 
+    -4px -2px 1px 2px $newRed;
+  background-size: cover;
+  background-repeat: no-repeat;
+  transition: background-image 1s ease-in-out;
+  
+  // strong {
+  //   // 
+  // }
+  
+  .main-controls {
+    display: flex;
+    justify-content: space-evenly;
+    margin: auto 0 0 auto;
+    padding: 0.25rem;
+    border-radius: 1.5rem;
+    background-color: rgba(0,0,0,0.8);
+    
+    button {
+      @include center-all();
+      height: 2.25rem;
+      width: 2.25rem;
+      border-radius: 50%;
+      border: 1px solid transparent;
+      background-color: transparent;
+      color: #fff;
+      transition: 0.2s;
+      
+      &:hover {
+        border-color: $newRed;
+      }
+    }
+  }
+}

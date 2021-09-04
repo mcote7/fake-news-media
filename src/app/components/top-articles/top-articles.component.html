@@ -1,0 +1,39 @@
+
+<ng-container *ngIf="!loadingArticles; else isLoadingArticles">
+  <div 
+    (mouseenter)="isActive = true"
+    (mouseleave)="isActive = false"
+    class="col-6 mx-auto top-stories"
+    [style.background-image]="'url('+articles[0].urlToImage+')'">
+    
+    <strong>{{articles[0].title}}</strong>
+    
+    <ng-container *ngIf="isActive">
+      <div class="main-controls">
+        <button 
+          (click)="backwardArticles()">
+          <i class="fa fa-backward backward" aria-hidden="true"></i>
+        </button>
+        <button 
+          *ngIf="!isPlaying"
+          (click)="playArticles()">
+          <i class="fa fa-play play" aria-hidden="true"></i>
+        </button>
+        <button 
+          *ngIf="isPlaying"
+          (click)="stopArticles()">
+          <i class="fa fa-stop stop" aria-hidden="true"></i>
+        </button>
+        <button 
+          (click)="forwardArticles()">
+          <i class="fa fa-forward forward" aria-hidden="true"></i>
+        </button>
+      </div>
+    </ng-container>
+  </div>
+</ng-container>
+
+<ng-template #isLoadingArticles>
+  Loading
+</ng-template>
+

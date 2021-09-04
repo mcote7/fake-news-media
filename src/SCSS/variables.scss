@@ -1,0 +1,16 @@
+
+
+
+
+$newRed: #f50035;
+$box-shadow-color: #292e3773;
+
+
+
+
+// mix-ins
+@mixin center-all {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
