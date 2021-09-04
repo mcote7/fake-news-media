@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NewsService } from './services/news.service';
 
 @Component({
   selector: 'app-root',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AppComponent implements OnInit {
   title = 'fake-news-media';
-  constructor() {}
+
+  constructor(private newsService: NewsService) {}
   
   ngOnInit() {
-    // 
+    this.newsService.getTopArticles().subscribe(news => {
+      console.log("top stories?", news)
+    });
   }
 }
