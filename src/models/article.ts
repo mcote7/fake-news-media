@@ -1,13 +1,14 @@
 
 export interface Article {
   title: string;
-  description: string;
+  author: string;
   content: string;
-  url: string;
-  image: string;
+  description:string;
   publishedAt: string;
+  url: string;
+  urlToImage: string;
   source: {
+    id: string;
     name: string;
-    url: string;
   }
 };

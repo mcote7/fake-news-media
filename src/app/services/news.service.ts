@@ -2,10 +2,28 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
 import { catchError } from "rxjs/operators";
 import { Observable } from "rxjs";
-import * as Constants from 'src/constants';
 
-// GET https://gnews.io/api/v4/top-headlines?token=
-// GET https://gnews.io/api/v4/search?q=example&token=API-Token
+// https://saurav.tech/NewsAPI/top-headlines/category/<category>/<countryCode>.json
+// cats: {
+//   business
+//   entertainment
+//   general
+//   health
+//   science
+//   sports
+//   technology
+// }
+// https://saurav.tech/NewsAPI/top-headlines/category/technology/us.json
+
+// https://saurav.tech/NewsAPI/everything/<source_id>.json
+// sources: {
+//   bbc-news
+//   cnn
+//   fox-news
+//   google-news
+// }
+// 'https://saurav.tech/NewsAPI/everything/fox-news.json'
+
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +34,8 @@ export class NewsService {
 
   // get top Articles 
   getTopArticles(): Observable<any> {
-    return this.http.get(`https://gnews.io/api/v4/top-headlines?token=${Constants.API_KEY}&lang=en`)
+    var url = 'https://saurav.tech/NewsAPI/everything/fox-news.json';
+    return this.http.get(url)
       .pipe(catchError((error:any) => error));
   }
 

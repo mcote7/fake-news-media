@@ -1,4 +1,18 @@
 
 <div class="container-fluid">
-  hello
+  <h1>fake news media</h1>
+  <div class="row">
+
+    <ng-container *ngIf="!loadingArticles; else isLoadingArticles">
+      <div 
+        class="top-stories"
+        [style.background-image]="'url('+currentArticle.urlToImage+')'">
+        
+        <strong>{{currentArticle?.title}}</strong>
+      </div>
+    </ng-container>
+    <ng-template #isLoadingArticles>
+      Loading
+    </ng-template>
+  </div>
 </div>
