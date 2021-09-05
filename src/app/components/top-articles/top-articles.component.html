@@ -4,6 +4,7 @@
     (mouseenter)="isActive = true"
     (mouseleave)="isActive = true"
     class="col-6 mx-auto top-stories"
+    [class.no-image]="loadingArticles"
     [style.background-image]="'url('+articles[0]?.urlToImage+')'">
     
     <ng-container *ngIf="!loadingArticles; else isLoadingArticles">
@@ -70,7 +71,11 @@
       
       <ng-container *ngIf="isActive">
         <details class="source-selector">
-          <summary><small><i>source:</i></small>&nbsp;{{articles[0].source.name}}</summary>
+          <summary id="dets">
+            <i class="fa fa-globe" aria-hidden="true"></i>
+            &nbsp;<small>source:</small>
+            &nbsp;{{articles[0].source.name}}
+          </summary>
           <div class="src-btn-wrap">
             <button (click)="getArticleBySource('fox-news')">
               Fox news
@@ -88,13 +93,10 @@
         </details>
       </ng-container>
     </ng-container>
-      <!-- <div class="loading-articles">
-        <i class="fa fa-spinner" aria-hidden="true"></i>
-      </div> -->
     <ng-template #isLoadingArticles>
-      <!-- <div class="loading-articles">
+      <div @fadeOutLong class="loading-articles">
         <i class="fa fa-spinner" aria-hidden="true"></i>
-      </div> -->
+      </div>
     </ng-template>
   </div>
 </ng-container>

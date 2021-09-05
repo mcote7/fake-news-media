@@ -2,11 +2,14 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { NewsService } from 'src/app/services/news.service';
 import { Article } from 'src/models/article';
 import { Subscription } from 'rxjs';
+import { fadeOutLong } from 'src/animations/anime';
+
 
 @Component({
   selector: 'top-articles',
   templateUrl: './top-articles.component.html',
-  styleUrls: ['./top-articles.component.scss']
+  styleUrls: ['./top-articles.component.scss'],
+  animations: [fadeOutLong]
 })
 export class TopArticlesComponent implements OnInit, OnDestroy {
   public sub: Subscription;
@@ -20,12 +23,18 @@ export class TopArticlesComponent implements OnInit, OnDestroy {
   public interval: any;
   public speed: number = 4444;
   public isFast: boolean;
-  public detailsOpen: boolean;
+
+  // public detailsOpen: boolean = false;
 
   constructor(private newsService: NewsService) {}
 
   ngOnInit() {
     this.getArticleBySource('fox-news');
+    const details = document.querySelector("#dets");
+    console.log(details);
+    // details.addEventListener("click", function(e) {
+    //   console.log(e);
+    // });
   }
 
   getArticleBySource(source:string) {
@@ -35,6 +44,7 @@ export class TopArticlesComponent implements OnInit, OnDestroy {
       if(news && news.articles) {
         this.isPlaying ? this.stopArticles() : '';
         this.articles = news.articles;
+        this.preLoadImages();
         console.log("top articles?", this.articles)
         this.playArticles();
         this.loadingArticles = false;
@@ -45,6 +55,13 @@ export class TopArticlesComponent implements OnInit, OnDestroy {
     });
   }
 
+  preLoadImages() {
+    for(let i = 0; i < this.articles.length; i++) {
+      let img = new Image();
+      img.src = this.articles[i].urlToImage;
+      console.log("pre-load images?", img, i+1)
+    }
+  }
 
   playArticles() {
     this.isPlaying = true;

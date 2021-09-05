@@ -57,19 +57,23 @@ export const fadeInOut = trigger('fadeInOut', [
 export const fadeOutLong = trigger('fadeOutLong', [
     transition(':enter', [
         style({
-            opacity: 0
-        }),
-        animate(10, style({
             opacity: 1
-        }))
+        })
     ]),
     transition(':leave', [
         style({
             opacity: 1
         }),
-        animate(1882, style({
-            opacity: 0
-        }))
+        animate(2222, keyframes([
+          style({
+              offset: .5,
+              opacity: 1
+          }),
+          style({
+              offset: 1,
+              opacity: 0
+          })
+      ]))
     ])
 ]);
 

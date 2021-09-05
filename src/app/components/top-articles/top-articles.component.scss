@@ -14,7 +14,13 @@
     -4px -2px 1px 2px $newRed;
   background-size: cover;
   background-repeat: no-repeat;
-  transition: background-image 1s ease-in-out;
+  backface-visibility: hidden;
+  transform: translate3d(0, 0, 0);
+  transition: background-image 0.8s ease-in-out;
+  
+  &.no-image {
+    background-image: url('../../../assets/self.jpg')!important;
+  }
   
   strong {
     cursor: default;
@@ -102,15 +108,17 @@
     bottom: 0.5rem;
     left: 0.75rem;
     background-color: $newRed;
-    padding: 0 1rem;
+    padding: 0 0.75rem;
     border-radius: 1rem;
-    padding-bottom: 2px;
+    padding-left: 0.5rem;
     
     summary {
       @include center-all();
     }
     .src-btn-wrap {
-
+      display: flex;
+      flex-direction: column;
+      
       button {
   
       }
@@ -128,5 +136,20 @@
     border-radius: 1rem;
     background-color: rgba(255,255,255,0.5);
     backdrop-filter: blur(4px);
+    &::after {
+      content: '📰';
+      position: absolute;
+      font-size: 1.75rem;
+    }
+    
+    i {
+      font-size: 6.5rem;
+      animation: spin 1s infinite linear;
+      @keyframes spin {
+        from {transform: rotate(0deg); opacity: 0.75;}
+        50% {opacity: 1;}
+        to {transform: rotate(360deg); opacity: 0.75;}
+      }
+    }
   }
 }
