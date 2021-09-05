@@ -4,7 +4,6 @@
   display: flex;
   position: relative;
   color: #fff;
-  padding: 0.5rem 1rem;
   height: 25rem;
   border-radius: 1rem;
   box-shadow: 
@@ -17,14 +16,27 @@
   background-repeat: no-repeat;
   transition: background-image 1s ease-in-out;
   
-  // strong {
-  //   // 
-  // }
+  strong {
+    cursor: default;
+    position: absolute;
+    top: 0.5rem;
+    left: 0.75rem;
+    background-color: rgba(0,0,0,0.8);
+    padding: 0.25rem 0.75rem;
+    border-radius: 1.5rem;
+    height: fit-content;
+    max-width: 80%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
   
   .main-controls {
     display: flex;
+    position: absolute;
+    bottom: 0.5rem;
+    right: 0.75rem;
     justify-content: space-evenly;
-    margin: auto 0 0 auto;
     padding: 0.25rem;
     border-radius: 1.5rem;
     background-color: rgba(0,0,0,0.8);
@@ -40,8 +52,81 @@
       transition: 0.2s;
       
       &:hover {
-        border-color: $newRed;
+        background-color: #000;
+        &.stop {
+          border-color: $newRed;
+        }
+        &.play {
+          border-color: $newGreen;
+        }
+        &.forward, &.backward {
+          border-color: #fff;
+        }
       }
     }
+    .speed {
+      @include center-all();
+      position: absolute;
+      top: -1rem;
+      right: 0;
+      background-color: $newRed;
+      height: 1.25rem;
+      width: 1.25rem;
+      border-radius: 50%;
+      font-weight: 600;
+      
+      sub {
+        position: absolute;
+        bottom: 4px;
+        right: -2px;
+        font-weight: 700;
+      }
+    }
+  }
+  
+  .no-articles {
+    display: flex;
+    position: absolute;
+    bottom: 0.5rem;
+    right: 0.75rem;
+    justify-content: space-evenly;
+    padding: 0.25rem 1rem;
+    padding-bottom: 0.5rem;
+    border-radius: 1.5rem;
+    background-color: rgba(0,0,0,0.8);
+  }
+  
+  .source-selector {
+    display: flex;
+    position: absolute;
+    bottom: 0.5rem;
+    left: 0.75rem;
+    background-color: $newRed;
+    padding: 0 1rem;
+    border-radius: 1rem;
+    padding-bottom: 2px;
+    
+    summary {
+      @include center-all();
+    }
+    .src-btn-wrap {
+
+      button {
+  
+      }
+    }
+  }
+  
+  .loading-articles {
+    @include center-all();
+    position: absolute;
+    z-index: 1982;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    border-radius: 1rem;
+    background-color: rgba(255,255,255,0.5);
+    backdrop-filter: blur(4px);
   }
 }

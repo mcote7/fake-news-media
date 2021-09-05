@@ -1,39 +1,101 @@
 
-<ng-container *ngIf="!loadingArticles; else isLoadingArticles">
+<ng-container>
   <div 
     (mouseenter)="isActive = true"
-    (mouseleave)="isActive = false"
+    (mouseleave)="isActive = true"
     class="col-6 mx-auto top-stories"
-    [style.background-image]="'url('+articles[0].urlToImage+')'">
+    [style.background-image]="'url('+articles[0]?.urlToImage+')'">
     
-    <strong>{{articles[0].title}}</strong>
-    
-    <ng-container *ngIf="isActive">
-      <div class="main-controls">
-        <button 
-          (click)="backwardArticles()">
-          <i class="fa fa-backward backward" aria-hidden="true"></i>
-        </button>
-        <button 
-          *ngIf="!isPlaying"
-          (click)="playArticles()">
-          <i class="fa fa-play play" aria-hidden="true"></i>
-        </button>
-        <button 
-          *ngIf="isPlaying"
-          (click)="stopArticles()">
-          <i class="fa fa-stop stop" aria-hidden="true"></i>
-        </button>
-        <button 
-          (click)="forwardArticles()">
-          <i class="fa fa-forward forward" aria-hidden="true"></i>
-        </button>
-      </div>
+    <ng-container *ngIf="!loadingArticles; else isLoadingArticles">
+      <strong title="{{articles[0].title}}">
+        <i class="fa fa-newspaper-o" aria-hidden="true"></i>
+        &nbsp;{{articles[0].title}}
+      </strong>
+      
+      <ng-container *ngIf="isActive && articles.length > 1">
+        <div class="main-controls">
+          <button 
+            class="backward"
+            title="back"
+            (click)="backwardArticles()">
+            <i class="fa fa-backward backward" aria-hidden="true"></i>
+          </button>
+          <button 
+            class="play"
+            title="play"
+            *ngIf="!isPlaying"
+            (click)="playArticles()">
+            <i class="fa fa-play play" aria-hidden="true"></i>
+          </button>
+          <button 
+            class="stop"
+            title="stop"
+            *ngIf="isPlaying"
+            (click)="stopArticles()">
+            <i class="fa fa-stop stop" aria-hidden="true"></i>
+          </button>
+          <button 
+            class="forward"
+            title="next"
+            (click)="forwardArticles()">
+            <i class="fa fa-forward forward" aria-hidden="true"></i>
+          </button>
+          <button 
+            class="speed" 
+            title="set speed 2x"
+            *ngIf="isPlaying && !isFast"
+            (click)="setFastSpeed()">
+            {{this.speed|speed}}<sub>x</sub>
+          </button>
+          <button 
+            class="speed" 
+            title="set speed 1x"
+            *ngIf="isPlaying && isFast"
+            (click)="setRegSpeed()">
+            {{this.speed|speed}}<sub>x</sub>
+          </button>
+        </div>
+      </ng-container>
+      
+      <ng-container *ngIf="isActive && articles.length === 1">
+        <div class="no-articles">
+          only one article available
+        </div>
+      </ng-container>
+      <ng-container *ngIf="isActive && articles.length === 0">
+        <div class="no-articles">
+          no articles available
+        </div>
+      </ng-container>
+      
+      <ng-container *ngIf="isActive">
+        <details class="source-selector">
+          <summary><small><i>source:</i></small>&nbsp;{{articles[0].source.name}}</summary>
+          <div class="src-btn-wrap">
+            <button (click)="getArticleBySource('fox-news')">
+              Fox news
+            </button>
+            <button (click)="getArticleBySource('cnn')">
+              CNN
+            </button>
+            <button (click)="getArticleBySource('bbc-news')">
+              BBC news
+            </button>
+            <button (click)="getArticleBySource('google-news')">
+              Google news
+            </button>
+          </div>
+        </details>
+      </ng-container>
     </ng-container>
+      <!-- <div class="loading-articles">
+        <i class="fa fa-spinner" aria-hidden="true"></i>
+      </div> -->
+    <ng-template #isLoadingArticles>
+      <!-- <div class="loading-articles">
+        <i class="fa fa-spinner" aria-hidden="true"></i>
+      </div> -->
+    </ng-template>
   </div>
 </ng-container>
-
-<ng-template #isLoadingArticles>
-  Loading
-</ng-template>
-
+<!-- 🚧🚧🚧 -->

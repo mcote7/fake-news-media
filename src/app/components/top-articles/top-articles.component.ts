@@ -18,6 +18,9 @@ export class TopArticlesComponent implements OnInit, OnDestroy {
   public isActive: boolean;
   public isPlaying: boolean;
   public interval: any;
+  public speed: number = 4444;
+  public isFast: boolean;
+  public detailsOpen: boolean;
 
   constructor(private newsService: NewsService) {}
 
@@ -30,6 +33,7 @@ export class TopArticlesComponent implements OnInit, OnDestroy {
     this.sub = this.newsService.getArticlesBysource(source).subscribe(news => {
       // console.log("hey", news);
       if(news && news.articles) {
+        this.isPlaying ? this.stopArticles() : '';
         this.articles = news.articles;
         console.log("top articles?", this.articles)
         this.playArticles();
@@ -44,9 +48,11 @@ export class TopArticlesComponent implements OnInit, OnDestroy {
 
   playArticles() {
     this.isPlaying = true;
-    this.interval = setInterval(() => {
-      this.articles.push(this.articles.shift());
-    }, 4000);
+    setTimeout(() => {
+      this.interval = setInterval(() => {
+        this.articles.push(this.articles.shift());
+      }, this.speed);
+    });
   }
 
   stopArticles() {
@@ -60,6 +66,20 @@ export class TopArticlesComponent implements OnInit, OnDestroy {
 
   forwardArticles() {
     this.articles.push(this.articles.shift()); 
+  }
+
+  setFastSpeed() {
+    this.isFast = true;
+    clearInterval(this.interval);
+    this.speed = 2222;
+    this.playArticles();
+  }
+
+  setRegSpeed() {
+    this.isFast = false;
+    clearInterval(this.interval);
+    this.speed = 4444;
+    this.playArticles();
   }
 
   // resetCurrentArticle() {

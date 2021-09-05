@@ -10,6 +10,7 @@ import { NewsService } from './services/news.service';
 import { NewsFeedComponent } from './components/news-feed/news-feed.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { TopArticlesComponent } from './components/top-articles/top-articles.component';
+import { SpeedPipe } from './pipes/speed.pipe';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { TopArticlesComponent } from './components/top-articles/top-articles.com
     NewsFeedComponent,
     NavbarComponent,
     TopArticlesComponent,
+    SpeedPipe,
   ],
   imports: [
     BrowserModule,

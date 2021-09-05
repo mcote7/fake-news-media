@@ -7,9 +7,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  title = 'fake-news-media';
+  // title = 'fake-news-media';
   
   constructor() {}
   
-  ngOnInit() {}
+  ngOnInit() {
+    document.title = "📰 Fake News Media";
+  }
 }
