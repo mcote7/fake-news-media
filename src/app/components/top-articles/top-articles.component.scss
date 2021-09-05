@@ -108,19 +108,46 @@
     bottom: 0.5rem;
     left: 0.75rem;
     background-color: $newRed;
-    padding: 0 0.75rem;
+    padding: 0 0.5rem;
     border-radius: 1rem;
-    padding-left: 0.5rem;
+    
+    &.active {
+      padding-bottom: 0.5rem;
+      border-radius: 0.5rem;
+    }
     
     summary {
       @include center-all();
+      
+      &.active {
+        margin: 0.25rem 0;
+      }
+      
+      span {
+        font-weight: bold;
+      }
+      
+      i {
+        &.active {
+          transform-origin: 50% 55%;
+          transform: rotate(180deg);
+        }
+      }
     }
+    
     .src-btn-wrap {
       display: flex;
       flex-direction: column;
       
       button {
-  
+        padding: 0;
+        border-radius: 0.25rem;
+        background-color: #fff;
+        
+        &:hover {
+          color: $newRed;
+          font-weight: bold;
+        }
       }
     }
   }

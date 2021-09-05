@@ -2,7 +2,7 @@
 <ng-container>
   <div 
     (mouseenter)="isActive = true"
-    (mouseleave)="isActive = true"
+    (mouseleave)="isActive = false"
     class="col-6 mx-auto top-stories"
     [class.no-image]="loadingArticles"
     [style.background-image]="'url('+articles[0].urlToImage+')'">
@@ -70,23 +70,36 @@
       </ng-container>
       
       <ng-container *ngIf="isActive">
-        <details class="source-selector">
-          <summary id="dets">
+        <details 
+          class="source-selector" 
+          [class.active]="detailsOpen"
+          (click)="toggleSources()">
+          
+          <summary [class.active]="detailsOpen">
             <i class="fa fa-globe" aria-hidden="true"></i>
-            &nbsp;<small>source:</small>
-            &nbsp;{{articles[0].source.name}}
+            &nbsp;<small><i>source:</i></small>
+            &nbsp;<span>{{articles[0].source.name}}</span>
+            &nbsp;<i class="fa fa-caret-up" [class.active]="detailsOpen" aria-hidden="true"></i>
           </summary>
           <div class="src-btn-wrap">
-            <button (click)="getArticleBySource('fox-news')">
+            <button 
+              *ngIf="currentSource !== 'fox-news'"
+              (click)="getArticleBySource('fox-news')">
               Fox news
             </button>
-            <button (click)="getArticleBySource('cnn')">
+            <button 
+              *ngIf="currentSource !== 'cnn'"
+              (click)="getArticleBySource('cnn')">
               CNN
             </button>
-            <button (click)="getArticleBySource('bbc-news')">
+            <button 
+              *ngIf="currentSource !== 'bbc-news'"
+              (click)="getArticleBySource('bbc-news')">
               BBC news
             </button>
-            <button (click)="getArticleBySource('google-news')">
+            <button 
+              *ngIf="currentSource !== 'google-news'"
+              (click)="getArticleBySource('google-news')">
               Google news
             </button>
           </div>

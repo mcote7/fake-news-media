@@ -29,30 +29,27 @@ export class TopArticlesComponent implements OnInit, OnDestroy {
 
   public loadingArticles: boolean;
   public articles: Article[] = [];
-  public currentArticle: Article;
+  public currentSource: string;
+  // public currentArticle: Article;
 
   public isActive: boolean;
   public isPlaying: boolean;
   public interval: any;
   public speed: number = 4444;
   public isFast: boolean;
-
-  // public detailsOpen: boolean = false;
+  public detailsOpen: boolean = false;
 
   constructor(private newsService: NewsService) {}
 
   ngOnInit() {
     this.articles[0] = this.defaultArticle;
     this.getArticleBySource('fox-news');
-    // const details = document.querySelector("#dets");
-    // console.log(details);
-    // details.addEventListener("click", function(e) {
-    //   console.log(e);
-    // });
   }
 
   getArticleBySource(source:string) {
     this.loadingArticles = true;
+    this.detailsOpen = false;
+    this.currentSource = source;
     this.sub = this.newsService.getArticlesBysource(source).subscribe(news => {
       // console.log("hey", news);
       if(news && news.articles) {
@@ -111,6 +108,11 @@ export class TopArticlesComponent implements OnInit, OnDestroy {
     clearInterval(this.interval);
     this.speed = 4444;
     this.playArticles();
+  }
+
+  toggleSources() {
+    this.detailsOpen = !this.detailsOpen;
+    console.log("toggle sources?", this.detailsOpen)
   }
 
   // resetCurrentArticle() {
