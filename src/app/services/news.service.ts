@@ -3,27 +3,6 @@ import { HttpClient } from "@angular/common/http";
 import { catchError } from "rxjs/operators";
 import { Observable } from "rxjs";
 
-// https://saurav.tech/NewsAPI/top-headlines/category/<category>/<countryCode>.json
-// cats: {
-//   business
-//   entertainment
-//   general
-//   health
-//   science
-//   sports
-//   technology
-// }
-// EX: https://saurav.tech/NewsAPI/top-headlines/category/technology/us.json
-
-// https://saurav.tech/NewsAPI/everything/<source_id>.json
-// sources: {
-//   bbc-news
-//   cnn
-//   fox-news
-//   google-news
-// }
-// EX: https://saurav.tech/NewsAPI/everything/fox-news.json
-
 
 @Injectable({
   providedIn: 'root'
@@ -50,5 +29,26 @@ export class NewsService {
   // get Articles by country (see list) 
 
   // get Articles by search term 
-
 }
+
+
+// https://saurav.tech/NewsAPI/top-headlines/category/<category>/<countryCode>.json
+// cats: {
+//   business
+//   entertainment
+//   general
+//   health
+//   science
+//   sports
+//   technology
+// }
+// EX: https://saurav.tech/NewsAPI/top-headlines/category/technology/us.json
+
+// https://saurav.tech/NewsAPI/everything/<source_id>.json
+// sources: {
+//   bbc-news
+//   cnn
+//   fox-news
+//   google-news
+// }
+// EX: https://saurav.tech/NewsAPI/everything/fox-news.json
