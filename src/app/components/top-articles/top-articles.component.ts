@@ -13,9 +13,22 @@ import { fadeOutLong } from 'src/animations/anime';
 })
 export class TopArticlesComponent implements OnInit, OnDestroy {
   public sub: Subscription;
+  public defaultArticle: Article = {
+    title: '',
+    author: '',
+    content: '',
+    description: '',
+    publishedAt: '',
+    url: '',
+    urlToImage: 'assets/black.jpg',
+    source: {
+      id: '',
+      name: ''
+    }
+  };
 
   public loadingArticles: boolean;
-  public articles: Article[];
+  public articles: Article[] = [];
   public currentArticle: Article;
 
   public isActive: boolean;
@@ -29,9 +42,10 @@ export class TopArticlesComponent implements OnInit, OnDestroy {
   constructor(private newsService: NewsService) {}
 
   ngOnInit() {
+    this.articles[0] = this.defaultArticle;
     this.getArticleBySource('fox-news');
-    const details = document.querySelector("#dets");
-    console.log(details);
+    // const details = document.querySelector("#dets");
+    // console.log(details);
     // details.addEventListener("click", function(e) {
     //   console.log(e);
     // });

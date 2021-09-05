@@ -5,7 +5,7 @@
     (mouseleave)="isActive = true"
     class="col-6 mx-auto top-stories"
     [class.no-image]="loadingArticles"
-    [style.background-image]="'url('+articles[0]?.urlToImage+')'">
+    [style.background-image]="'url('+articles[0].urlToImage+')'">
     
     <ng-container *ngIf="!loadingArticles; else isLoadingArticles">
       <strong title="{{articles[0].title}}">
