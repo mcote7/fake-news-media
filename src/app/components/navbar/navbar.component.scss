@@ -1,0 +1,72 @@
+@import '../../../SCSS/index.scss';
+
+
+.news-nav {
+  border-bottom: 0.25rem dashed $newRed;
+  box-shadow: 0px 2px 8px 2px $box-shadow-color;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position-x: center;
+  background-color: #fff!important;
+  background-image: url('../../../assets/Fake-News.jpg');
+  
+  .nav-container {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    .nav-left {
+      display: flex;
+      margin-left: 1rem;
+      
+      .navbar-brand {
+        padding: 0;
+        
+        .brand {
+          height: 3.25rem;
+          width: 3.25rem;
+          background-size: contain;
+          background-repeat: no-repeat;
+          background-position-x: center;
+          background-image: url('../../../assets/badge.jfif');
+        }
+      }
+      
+      .search {
+        @include center-all();
+        &:focus-within {
+          background-color: #000
+        }
+      }
+    }
+    
+    .nav-right {
+      display: flex;
+      margin-right: 1rem;
+      
+      .btn-wrp {
+        display: flex;
+        
+        button {
+          @include center-all();
+          height: 3rem;
+          width: 3rem;
+          padding: 0;
+          background-color: #fff;
+          margin-left: 0.5rem;
+          border-radius: 50%;
+          background-color: $bg-color;
+          transition: 0.2s;
+          
+          &:hover {
+            background-color: #000;
+          }
+          
+          svg {
+            height: 2rem;
+            width: 2rem;
+          }
+        }
+      }
+    }
+  }
+}

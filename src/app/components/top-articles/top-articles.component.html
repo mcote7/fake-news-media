@@ -72,10 +72,11 @@
       <ng-container *ngIf="isActive">
         <details 
           class="source-selector" 
-          [class.active]="detailsOpen"
-          (click)="toggleSources()">
+          [class.active]="detailsOpen">
           
-          <summary [class.active]="detailsOpen">
+          <summary 
+            (click)="toggleSources()"
+            [class.active]="detailsOpen">
             <i class="fa fa-globe" aria-hidden="true"></i>
             &nbsp;<small><i>source:</i></small>
             &nbsp;<span>{{articles[0].source.name}}</span>
