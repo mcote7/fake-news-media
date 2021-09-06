@@ -17,6 +17,11 @@ export class AppComponent implements OnInit {
   constructor() {}
   
   ngOnInit() {
+    window.onload = () => {
+      setTimeout (() => {
+        scrollTo(0,0);
+      }, 100);
+    }
     document.title = "📰 Fake News Media";
     this.progress$ = this.scroll$.pipe(
       throttleTime(25),
