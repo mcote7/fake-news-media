@@ -11,6 +11,8 @@ export class NavbarComponent implements OnInit {
 
   @Input('isNavFixed$') isNavFixed$: Observable<boolean>;
 
+  isDropdownShown: boolean = false;
+
   constructor() {}
 
   ngOnInit() {
