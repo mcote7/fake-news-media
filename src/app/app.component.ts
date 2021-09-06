@@ -26,15 +26,15 @@ export class AppComponent implements OnInit {
     }
     document.title = "📰 Fake News Media";
     this.progress$ = this.scroll$.pipe(
-      throttleTime(25),
+      throttleTime(10),
       map(({ target }: any) => this.calculateScrollPercent(target.scrollingElement)),
-      tap(console.log) 
+      // tap(console.log) 
     );
     this.progress$.subscribe(percent => {
       let subTar = document.documentElement.scrollTop;
       this.subNavTar = document.getElementById('sub-nav-tar');
       const sub = this.subNavTar.offsetHeight;
-      if(percent > 10) {
+      if(percent > 5) {
         this.isNavFixed$ = of(true);
       } else {
         this.isNavFixed$ = of(false);

@@ -73,7 +73,7 @@ export class TopArticlesComponent implements OnInit, OnDestroy {
     for(let i = 0; i < this.articles.length; i++) {
       let img = new Image();
       img.src = this.articles[i].urlToImage;
-      console.log("pre-load images?", img, i+1)
+      // console.log("pre-load images?", img, i+1)
     }
   }
 
