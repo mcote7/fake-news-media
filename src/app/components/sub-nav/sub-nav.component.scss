@@ -17,24 +17,68 @@ nav {
   .scroll-left, .scroll-right {
     position: absolute;
     height: 100%;
-    width: 1.5rem;
+    width: 1rem;
     margin: 0;
+    padding: 0;
     background-color: #000;
     color: #fff;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    transition: 1s ease-in-out;
+    opacity: 0;
+    pointer-events: none;
+    
+    @media only screen and (max-width: 1170px) {
+      opacity: 1;
+      pointer-events: all;
+    }
   }
+  
   .scroll-left {
+    background-position-x: 2px;
+    background-image: url('../../../assets/misc/chev-l.png');
     left: 0;
+    
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 100%;
+      width: 1rem;
+      height: 100%;
+      background: linear-gradient(to right, #000 , transparent);
+    }
   }
+  
   .scroll-right {
+    background-position-x: -2px;
+    background-image: url('../../../assets/misc/chev-r.png');
     right: 0;
+    
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 100%;
+      width: 1rem;
+      height: 100%;
+      background: linear-gradient(to left, #000 , transparent);
+    }
   }
   
   div {
     overflow-x: overlay;
     display: flex;
-    padding: 0 1.5rem;
+    padding: 0;
+    transition: 1s ease-in-out;
+    
     &::-webkit-scrollbar {
       display: none;
+    }
+    
+    @media only screen and (max-width: 1170px) {
+      padding: 0 2rem;
     }
     
     button {
@@ -54,7 +98,7 @@ nav {
       &:hover, &:active, &:focus {
         background-color: #fff;
         color: #000;
-
+        
         svg {
           fill: #000;
         }
