@@ -12,6 +12,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { TopArticlesComponent } from './components/top-articles/top-articles.component';
 
 import { SpeedPipe } from './pipes/speed.pipe';
+import { SubNavComponent } from './components/sub-nav/sub-nav.component';
 
 
 @NgModule({
@@ -21,6 +22,7 @@ import { SpeedPipe } from './pipes/speed.pipe';
     NavbarComponent,
     TopArticlesComponent,
     SpeedPipe,
+    SubNavComponent,
   ],
   imports: [
     BrowserModule,

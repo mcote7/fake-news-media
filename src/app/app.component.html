@@ -1,9 +1,12 @@
 
-<navbar [isNavFixed$]="isNavFixed$"></navbar>
-<div class="container-fluid">
+<navbar [isNavFixed$]="isNavFixed$" [isSubNavFixed$]="isSubNavFixed$"></navbar>
+<div class="container-fluid" id="sub-nav-tar">
   <div 
     [class.nav-fixed]="isNavFixed$|async"
     class="row top-stories-row">
     <top-articles [isNavFixed$]="isNavFixed$"></top-articles>
   </div>
 </div>
+<sub-nav [isSubNavFixed$]="isSubNavFixed$"></sub-nav>
+<news-feed></news-feed>
+<small style="position: fixed; bottom: 0; left: 0.25rem;">Michael Cote 2021</small>

@@ -10,6 +10,7 @@ import { Observable } from 'rxjs';
 export class NavbarComponent implements OnInit {
 
   @Input('isNavFixed$') isNavFixed$: Observable<boolean>;
+  @Input('isSubNavFixed$') isSubNavFixed$: Observable<boolean>;
 
   isDropdownShown: boolean = false;
 

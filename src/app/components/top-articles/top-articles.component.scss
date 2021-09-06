@@ -1,12 +1,22 @@
 @import '../../../SCSS/index.scss';
 
+h1 {
+  position: relative;
+  color: $newRed;
+  width: max-content;
+  padding: 0 0.5rem;
+  margin-left: 1rem;
+  margin-bottom: 0;
+  font-weight: 700;
+  letter-spacing: 2px;
+  background: linear-gradient(to top, rgba(0,0,0,0.2) 30%, transparent 50%);
+}
 .top-stories {
   display: flex;
   position: relative;
   color: #fff;
   height: 25rem;
   border-radius: 1rem;
-  margin: 1rem auto 1rem 2rem;
   box-shadow: 
     1px 1px 0px 0px #fff, 
     6px 6px 12px 6px $box-shadow-color, 

@@ -1,9 +1,10 @@
 
-<ng-container>
+<div class="col-lg-9 mx-auto">
+  <h1>Top Stories</h1>
   <div 
     (mouseenter)="isActive = true"
     (mouseleave)="isActive = false; detailsOpen = false"
-    class="col-sm-6 top-stories"
+    class="top-stories"
     [class.no-image]="loadingArticles"
     [style.background-image]="'url('+articles[0].urlToImage+')'">
     
@@ -113,5 +114,5 @@
       </div>
     </ng-template>
   </div>
-</ng-container>
+</div>
 <!-- 🚧🚧🚧 -->

@@ -1,0 +1,33 @@
+@import '../../../SCSS/index.scss';
+
+
+nav {
+  display: flex;
+  width: 100%;
+  background-color: red;
+  margin-bottom: 100vh;
+  
+  &.is-fixed {
+    position: fixed;
+    top: 5.25rem;
+    box-shadow: 0px 2px 8px 2px $box-shadow-color;
+  }
+
+  div {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+
+    button {
+      
+      svg {
+        height: 2rem;
+        width: 2rem;
+        margin-right: 0.5rem;
+      }
+      span {
+
+      }
+    }
+  }
+}
