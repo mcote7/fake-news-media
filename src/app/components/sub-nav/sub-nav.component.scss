@@ -4,8 +4,7 @@
 nav {
   display: flex;
   width: 100%;
-  background-color: red;
-  margin-bottom: 100vh;
+  background-color: $newRed;
   
   &.is-fixed {
     position: fixed;
@@ -19,14 +18,26 @@ nav {
     justify-content: center;
 
     button {
+      @include center-all();
+      border-radius: 1.5rem;
+      padding: 0.25rem 0.75rem;
+      background-color: $newRed;
+      color: #fff;
       
       svg {
-        height: 2rem;
-        width: 2rem;
+        height: 1.75rem;
+        width: 1.75rem;
         margin-right: 0.5rem;
+        fill: #fff;
       }
-      span {
+      
+      &:hover, &:active, &:focus {
+        background-color: #fff;
+        color: #000;
 
+        svg {
+          fill: #000;
+        }
       }
     }
   }
