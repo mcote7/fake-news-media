@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+
 
 @Component({
   selector: 'navbar',
@@ -7,9 +9,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavbarComponent implements OnInit {
 
+  @Input('isNavFixed$') isNavFixed$: Observable<boolean>;
+
   constructor() {}
 
   ngOnInit() {
   }
-
 }

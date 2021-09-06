@@ -1,7 +1,7 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { NewsService } from 'src/app/services/news.service';
 import { Article } from 'src/models/article';
-import { Subscription } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { fadeOutLong } from 'src/animations/anime';
 
 
@@ -11,7 +11,10 @@ import { fadeOutLong } from 'src/animations/anime';
   styleUrls: ['./top-articles.component.scss'],
   animations: [fadeOutLong]
 })
+
 export class TopArticlesComponent implements OnInit, OnDestroy {
+  @Input('isNavFixed$') isNavFixed$: Observable<boolean>;
+  
   public sub: Subscription;
   public defaultArticle: Article = {
     title: '',
