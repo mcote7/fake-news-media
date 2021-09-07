@@ -2,5 +2,6 @@
 
 .news-feed-container {
   @include center-all();
-  min-height: 200vh;
+  min-height: 100vh;
+  flex-direction: column;
 }

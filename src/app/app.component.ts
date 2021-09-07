@@ -20,7 +20,14 @@ export class AppComponent implements OnInit {
   
   constructor(private router: ActivatedRoute) {
     this.router.queryParamMap.subscribe(params => {
-      this.topic = params.get('topic') || 'technology';
+      if(params.get('topic') !== null) {
+        this.topic = params.get('topic');
+        console.log("YES topic?", this.topic)
+      } else {
+        this.topic = 'technology';
+        console.log("NO topic?", this.topic)
+      }
+      // console.log("?topic?", this.topic)
     });
   }
   

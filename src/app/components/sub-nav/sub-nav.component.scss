@@ -6,6 +6,7 @@ nav {
   position: relative;
   justify-content: center;
   width: 100%;
+  padding: 0.25rem;
   background-color: $newRed;
   transition: 0.4s ease-in-out;
   
@@ -82,11 +83,13 @@ nav {
       padding: 0 2rem;
     }
     
-    button {
+    a {
       @include center-all();
       border-radius: 1.5rem;
       padding: 0.25rem 0.75rem;
+      margin: 0 0.25rem;
       background-color: $newRed;
+      text-decoration: none;
       color: #fff;
       
       svg {
@@ -96,7 +99,7 @@ nav {
         fill: #fff;
       }
       
-      &:hover, &:active, &:focus {
+      &:hover, &:active, &:focus, &.active {
         background-color: #fff;
         color: #000;
         

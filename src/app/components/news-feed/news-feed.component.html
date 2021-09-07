@@ -2,4 +2,7 @@
 <!-- parent is row -->
 <div class="news-feed-container">
   🚧 news feed
+  <div *ngFor="let article of articles; index as i">
+    <small>{{i}}</small>&nbsp;<p>{{article.title}}</p>
+  </div>
 </div>

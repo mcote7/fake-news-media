@@ -1,4 +1,4 @@
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
 import { NewsService } from 'src/app/services/news.service';
 import { Article } from 'src/models/article';
 import { Observable, Subscription } from 'rxjs';
@@ -8,9 +8,7 @@ import { Observable, Subscription } from 'rxjs';
   templateUrl: './news-feed.component.html',
   styleUrls: ['./news-feed.component.scss']
 })
-export class NewsFeedComponent implements OnInit, OnDestroy {
-
-  constructor(private newsService: NewsService) {}
+export class NewsFeedComponent implements OnInit, OnDestroy, OnChanges {
 
   @Input('topic') topic: string;
 
@@ -33,8 +31,17 @@ export class NewsFeedComponent implements OnInit, OnDestroy {
   public articles: Article[] = [];
   // public currentTopic: string;
 
+  constructor(private newsService: NewsService) {}
+
   ngOnInit() {
     this.getArticlesByCategory();
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    console.log("changes???",changes)
+    if(changes.topic) {
+      this.getArticlesByCategory();
+    }
   }
 
   getArticlesByCategory() { // will @Input topic...
