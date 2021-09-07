@@ -34,7 +34,7 @@ export class AppComponent implements OnInit {
       let subTar = document.documentElement.scrollTop;
       this.subNavTar = document.getElementById('sub-nav-tar');
       const sub = this.subNavTar.offsetHeight;
-      if(percent > 5) {
+      if(percent > 1) {
         this.isNavFixed$ = of(true);
       } else {
         this.isNavFixed$ = of(false);

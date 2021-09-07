@@ -1,7 +1,7 @@
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { NewsService } from 'src/app/services/news.service';
 import { Article } from 'src/models/article';
-import { Observable, Subscription } from 'rxjs';
+import { Subscription } from 'rxjs';
 import { fadeOutLong } from 'src/animations/anime';
 
 
@@ -13,7 +13,6 @@ import { fadeOutLong } from 'src/animations/anime';
 })
 
 export class TopArticlesComponent implements OnInit, OnDestroy {
-  @Input('isNavFixed$') isNavFixed$: Observable<boolean>;
   
   public sub: Subscription;
   public defaultArticle: Article = {
@@ -59,7 +58,7 @@ export class TopArticlesComponent implements OnInit, OnDestroy {
         this.isPlaying ? this.stopArticles() : '';
         this.articles = news.articles;
         this.preLoadImages();
-        console.log("top articles?", this.articles)
+        // console.log("top articles?", this.articles)
         this.playArticles();
         this.loadingArticles = false;
       } else {
@@ -73,7 +72,7 @@ export class TopArticlesComponent implements OnInit, OnDestroy {
     for(let i = 0; i < this.articles.length; i++) {
       let img = new Image();
       img.src = this.articles[i].urlToImage;
-      console.log("pre-load images?", img, i+1)
+      // console.log("pre-load images?", img, i+1)
     }
   }
 
@@ -89,6 +88,7 @@ export class TopArticlesComponent implements OnInit, OnDestroy {
   stopArticles() {
     this.isPlaying = false;
     clearInterval(this.interval);
+    // console.log("stoped playing!!!")
   }
 
   backwardArticles() {
@@ -137,5 +137,6 @@ export class TopArticlesComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.sub.unsubscribe();
+    this.stopArticles();
   }
 }
