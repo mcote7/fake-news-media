@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { fromEvent, Observable, of } from 'rxjs';
-import { map, tap, throttleTime } from 'rxjs/operators';
+import { map, throttleTime } from 'rxjs/operators';
 
 
 @Component({
@@ -15,8 +16,13 @@ export class AppComponent implements OnInit {
   public isNavFixed$: Observable<boolean>;
   public subNavTar: HTMLElement;
   public isSubNavFixed$: Observable<boolean>;
+  public topic: string;
   
-  constructor() {}
+  constructor(private router: ActivatedRoute) {
+    this.router.queryParamMap.subscribe(params => {
+      this.topic = params.get('topic') || 'technology';
+    });
+  }
   
   ngOnInit() {
     window.onload = () => {

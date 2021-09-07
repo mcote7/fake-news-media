@@ -19,8 +19,8 @@ export class NewsService {
   }
 
   // get Articles by category (see list) 
-  getArticlesByCategory(category: string): Observable<any> {
-    const url = `https://saurav.tech/NewsAPI/top-headlines/category/${category}/us.json`;
+  getArticlesByTopic(topic: string): Observable<any> {
+    const url = `https://saurav.tech/NewsAPI/top-headlines/category/${topic}/us.json`;
     return this.http.get(url)
       .pipe(catchError((error:any) => error));
   }

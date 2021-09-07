@@ -9,6 +9,7 @@ import { Observable } from 'rxjs';
 export class SubNavComponent implements OnInit {
 
   @Input('isSubNavFixed$') isSubNavFixed$: Observable<boolean>;
+  @Input('topic') topic: string;
 
   public subNav: HTMLElement;
   public intervalA: any;

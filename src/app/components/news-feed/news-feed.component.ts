@@ -1,7 +1,7 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { NewsService } from 'src/app/services/news.service';
 import { Article } from 'src/models/article';
-import { Subscription } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 
 @Component({
   selector: 'news-feed',
@@ -11,6 +11,8 @@ import { Subscription } from 'rxjs';
 export class NewsFeedComponent implements OnInit, OnDestroy {
 
   constructor(private newsService: NewsService) {}
+
+  @Input('topic') topic: string;
 
   public sub: Subscription;
   public defaultArticle: Article = {
@@ -29,22 +31,22 @@ export class NewsFeedComponent implements OnInit, OnDestroy {
 
   public loadingArticles: boolean;
   public articles: Article[] = [];
-  public currentCatrgory: string;
+  // public currentTopic: string;
 
   ngOnInit() {
-    this.getArticlesByCategory('technology');
+    this.getArticlesByCategory();
   }
 
-  getArticlesByCategory(category: string) {
+  getArticlesByCategory() { // will @Input topic...
     this.loadingArticles = true;
-    this.currentCatrgory = category;
+    // this.currentTopic = topic;
     // console.log();
-    this.sub = this.newsService.getArticlesByCategory(category).subscribe(news => {
+    this.sub = this.newsService.getArticlesByTopic(this.topic).subscribe(news => {
       if(news && news.articles) {
         this.articles = news.articles;
         this.preLoadImages();
         this.loadingArticles = false;
-        console.log("cat articles?", this.articles)
+        console.log("topic articles?", this.articles)
       } else {
         this.loadingArticles = false;
         console.error("no articles??", news)
