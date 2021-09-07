@@ -31,10 +31,10 @@ export class AppComponent implements OnInit {
       // tap(console.log) 
     );
     this.progress$.subscribe(percent => {
-      let subTar = document.documentElement.scrollTop;
       this.subNavTar = document.getElementById('sub-nav-tar');
+      let subTar = document.documentElement.scrollTop + 68;  // 68 = height of top-nav;
       const sub = this.subNavTar.offsetHeight;
-      if(percent > 1) {
+      if(percent > 2) {
         this.isNavFixed$ = of(true);
       } else {
         this.isNavFixed$ = of(false);
