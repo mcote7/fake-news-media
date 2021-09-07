@@ -6,7 +6,6 @@ nav {
   position: relative;
   justify-content: center;
   width: 100%;
-  padding: 0.25rem;
   background-color: $newRed;
   transition: 0.4s ease-in-out;
   
@@ -34,6 +33,10 @@ nav {
     @media only screen and (max-width: 970px) {
       opacity: 1;
       pointer-events: all;
+    }
+    @media only screen and (max-width: 585px) {
+      opacity: 0;
+      pointer-events: none;
     }
   }
   
@@ -87,7 +90,7 @@ nav {
       @include center-all();
       border-radius: 1.5rem;
       padding: 0.25rem 0.75rem;
-      margin: 0 0.25rem;
+      margin: 0.25rem;
       background-color: $newRed;
       text-decoration: none;
       color: #fff;

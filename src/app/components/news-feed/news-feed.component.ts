@@ -29,7 +29,6 @@ export class NewsFeedComponent implements OnInit, OnDestroy, OnChanges {
 
   public loadingArticles: boolean;
   public articles: Article[] = [];
-  // public currentTopic: string;
 
   constructor(private newsService: NewsService) {}
 
@@ -38,15 +37,14 @@ export class NewsFeedComponent implements OnInit, OnDestroy, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    console.log("changes???",changes)
+    console.log("changes???", changes)
     if(changes.topic) {
       this.getArticlesByCategory();
     }
   }
 
-  getArticlesByCategory() { // will @Input topic...
+  getArticlesByCategory() {
     this.loadingArticles = true;
-    // this.currentTopic = topic;
     // console.log();
     this.sub = this.newsService.getArticlesByTopic(this.topic).subscribe(news => {
       if(news && news.articles) {
