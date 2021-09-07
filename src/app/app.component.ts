@@ -22,7 +22,7 @@ export class AppComponent implements OnInit {
     window.onload = () => {
       setTimeout (() => {
         scrollTo(0,0);
-      }, 100);
+      }, 10);
     }
     document.title = "📰 Fake News Media";
     this.progress$ = this.scroll$.pipe(
