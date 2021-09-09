@@ -12,8 +12,8 @@
 <sub-nav [isSubNavFixed$]="isSubNavFixed$" [topic]="topic"></sub-nav>
 
 <div class="container-fluid news-feed-container">
-  <div class="row news-feed-row">
-    <news-feed [topic]="topic"></news-feed>
+  <div class="news-feed-row">
+    <news-feed [topic]="topic" [isSubNavFixed$]="isSubNavFixed$"></news-feed>
   </div>
 </div>
 

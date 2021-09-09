@@ -1,8 +1,21 @@
 @import '../../../SCSS/index.scss';
 
-.news-feed-container {
-  @include center-all();
-  min-height: 100vh;
-  flex-direction: column;
-  padding: 8rem 1rem;
+.news-feed-row {
+  padding-top: 0;
+  transition: 0.5s ease-in-out;
+  
+  &.isFixed {
+    padding-top: 24rem;
+  }
+  
+  .card {
+    border-radius: 0.5rem;
+    background-color: $bg-color;
+    box-shadow: 2px 2px 8px 0px $box-shadow-color;
+    
+    img  {
+      border-radius: 0.5rem 0.5rem 0 0;
+      border-top: 0.25rem solid $newRed;
+    }
+  }
 }

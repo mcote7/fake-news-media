@@ -1,8 +1,14 @@
 
-<!-- parent is row -->
-<div class="news-feed-container">
-  🚧 news feed
-  <div *ngFor="let article of articles; index as i">
-    <small>{{i}}</small>&nbsp;<p>{{article.title}}</p>
+<div 
+  [class.isFixed]="isSubNavFixed$|async"
+  class="row news-feed-row">
+  <div 
+    *ngFor="let article of articles; index as i"
+    class="col-lg-3 col-md-4 px-3 py-5">
+    <div class="card">
+      <img class="mb-2" src="{{article.urlToImage}}" alt="news">
+      <h4 class="px-2">{{article.title}}</h4>
+      <p class="px-3">{{article.description}}</p>
+    </div>
   </div>
 </div>

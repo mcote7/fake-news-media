@@ -11,6 +11,7 @@ import { Observable, Subscription } from 'rxjs';
 export class NewsFeedComponent implements OnInit, OnDestroy, OnChanges {
 
   @Input('topic') topic: string;
+  @Input('isSubNavFixed$') isSubNavFixed$: Observable<boolean>;
 
   public sub: Subscription;
   public defaultArticle: Article = {
