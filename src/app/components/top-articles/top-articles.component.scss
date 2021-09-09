@@ -6,22 +6,34 @@ h1 {
   width: max-content;
   padding: 0 0.5rem;
   margin-left: 1rem;
-  margin-bottom: 0;
+  margin-bottom: 0.5rem;
   font-weight: 700;
-  letter-spacing: 2px;
+  letter-spacing: 4px;
+  z-index: 999;
+  text-shadow: 2px 2px 2px #000;
+  text-decoration: overline;
+  text-decoration-color: red;
+  text-decoration-style: wavy;
+  text-decoration-thickness: from-font;
+  background-color: rgba(0,0,0,0.8);
+  color: transparent;
+  text-shadow: 0px 2px 3px #fff;
+  background-clip: text;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: rgba(0,0,0,0.2);
 }
+
 .top-stories {
   display: flex;
   position: relative;
   color: #fff;
   height: 25rem;
   border-radius: 1rem;
+  border: 1px solid #fff;
   box-shadow: 
-    1px 1px 0px 0px #fff, 
-    6px 6px 12px 6px $box-shadow-color, 
-    inset 1px 1px 0px 0px #ffffff73, 
-    inset 1px 1px 8px 4px #000, 
-    -4px -2px 1px 2px $newRed;
+    -1px -1px 6px 6px #fff, 
+    6px 6px 4px 4px $box-shadow-color, 
+    inset 1px 1px 8px 4px #000;
   background-size: cover;
   background-repeat: no-repeat;
   backface-visibility: hidden;
@@ -192,4 +204,5 @@ h1 {
 }
 .top-details {
   margin: 1rem;
+  padding: 0 1rem;
 }
