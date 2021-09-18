@@ -14,6 +14,21 @@ import { TopArticlesComponent } from './components/top-articles/top-articles.com
 import { SpeedPipe } from './pipes/speed.pipe';
 import { SubNavComponent } from './components/sub-nav/sub-nav.component';
 
+// add to imports
+import { 
+    MatCard, 
+    MatCardModule, 
+    MatCardActions, 
+    MatCardAvatar, 
+    MatCardFooter, 
+    MatCardImage, 
+    MatCardTitleGroup, 
+    MatCardTitle, 
+    MatCardSubtitle, 
+    MatCardHeader,  
+    MatCardContent, 
+  } from '@angular/material';
+
 
 @NgModule({
   declarations: [
@@ -29,6 +44,17 @@ import { SubNavComponent } from './components/sub-nav/sub-nav.component';
     BrowserAnimationsModule,
     AppRoutingModule,
     HttpClientModule,
+    MatCard, 
+    MatCardModule, 
+    MatCardActions, 
+    MatCardAvatar, 
+    MatCardFooter, 
+    MatCardImage, 
+    MatCardTitleGroup, 
+    MatCardTitle, 
+    MatCardSubtitle, 
+    MatCardHeader,  
+    MatCardContent, 
   ],
   providers: [
     NewsService,
