@@ -2,13 +2,19 @@
 <div 
   [class.isFixed]="isSubNavFixed$|async"
   class="row news-feed-row">
-  <div 
-    *ngFor="let article of articles; index as i"
-    class="col-lg-3 col-md-4 px-3 py-5">
-    <div class="card">
-      <img class="mb-2" src="{{article.urlToImage}}" alt="news">
-      <h4 class="px-2">{{article.title}}</h4>
-      <p class="px-3">{{article.description}}</p>
+  <ng-container *ngIf="loadingArticles">
+    <div class="loading" style="height: 100vh;color: red;">Loading</div>
+  </ng-container>
+  <ng-container *ngIf="!loadingArticles">
+    <div 
+      *ngFor="let article of articles; index as i"
+      class="col-lg-3 col-md-4 px-3 py-5">
+  
+      <div class="card">
+        <img id="img{{i}}" class="mb-2" src="{{article.urlToImage}}" alt="news">
+        <h4 class="px-2">{{article.title}}</h4>
+        <p class="px-3">{{article.description}}</p>
+      </div>
     </div>
-  </div>
+  </ng-container>
 </div>

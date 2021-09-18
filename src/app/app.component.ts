@@ -12,10 +12,12 @@ import { map, throttleTime } from 'rxjs/operators';
 export class AppComponent implements OnInit {
 
   public scroll$ = fromEvent(document, 'scroll');
+  public subNavTar: HTMLElement;
+  public loadTopicTar: HTMLElement;
   public progress$: Observable<any>;
   public isNavFixed$: Observable<boolean>;
-  public subNavTar: HTMLElement;
   public isSubNavFixed$: Observable<boolean>;
+  public canLoadTopics: boolean;
   public topic: string;
   
   constructor(private router: ActivatedRoute) {
@@ -39,13 +41,18 @@ export class AppComponent implements OnInit {
       // tap(console.log) 
     );
     this.progress$.subscribe(percent => {
+      this.loadTopicTar = document.getElementById('sub-nav');
       this.subNavTar = document.getElementById('sub-nav-tar');
       let subTar = document.documentElement.scrollTop + 68;  // 68 = height of top-nav;
       const sub = this.subNavTar.offsetHeight;
-      if(percent > 2) {
+      if(percent > 1) {
         this.isNavFixed$ = of(true);
       } else {
         this.isNavFixed$ = of(false);
+      }
+      if(this.isInViewport(this.loadTopicTar)) {
+        this.canLoadTopics = true;
+        console.log("sub in view !!!!!", this.isInViewport(this.loadTopicTar))
       }
       if(subTar > sub) {
         this.isSubNavFixed$ = of(true);
@@ -59,5 +66,16 @@ export class AppComponent implements OnInit {
     const { scrollTop, scrollHeight, clientHeight } = element;
     // console.log("el", element)
     return (scrollTop / (scrollHeight - clientHeight)) * 100;
+  }
+
+  isInViewport(elem: HTMLElement): boolean {
+    let bounding = elem.getBoundingClientRect();
+    console.log("b?", bounding)
+    return (
+        bounding.top >= 0 &&
+        bounding.left >= 0 &&
+        bounding.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+        bounding.right <= (window.innerWidth || document.documentElement.clientWidth)
+    );
   }
 }

@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   templateUrl: './sub-nav.component.html',
   styleUrls: ['./sub-nav.component.scss']
 })
-export class SubNavComponent implements OnInit {
+export class SubNavComponent implements OnInit, OnDestroy {
 
   @Input('isSubNavFixed$') isSubNavFixed$: Observable<boolean>;
   @Input('topic') topic: string;
@@ -45,5 +45,10 @@ export class SubNavComponent implements OnInit {
   scrollRightClear() {
     clearInterval(this.intervalA);
     console.log('scroll right clear' ,this.subNav.scrollLeft)
+  }
+
+  ngOnDestroy() {
+    clearInterval(this.intervalA);
+    clearInterval(this.intervalB);
   }
 }

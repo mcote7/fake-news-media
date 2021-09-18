@@ -58,9 +58,7 @@ export class TopArticlesComponent implements OnInit, OnDestroy {
         this.isPlaying ? this.stopArticles() : '';
         this.articles = news.articles;
         this.preLoadImages();
-        // console.log("top articles?", this.articles)
-        this.playArticles();
-        this.loadingArticles = false;
+        console.log("top articles?", this.articles)
       } else {
         console.error("no articles??", news)
         this.loadingArticles = false;
@@ -72,8 +70,12 @@ export class TopArticlesComponent implements OnInit, OnDestroy {
     for(let i = 0; i < this.articles.length; i++) {
       let img = new Image();
       img.src = this.articles[i].urlToImage;
+      img.style.display = 'none';
+      document.body.appendChild(img);
       // console.log("pre-load images?", img, i+1)
     }
+    this.loadingArticles = false;
+    this.playArticles();
   }
 
   playArticles() {
@@ -88,7 +90,7 @@ export class TopArticlesComponent implements OnInit, OnDestroy {
   stopArticles() {
     this.isPlaying = false;
     clearInterval(this.interval);
-    // console.log("stoped playing!!!")
+    // console.log("stoped playing")
   }
 
   backwardArticles() {
@@ -115,25 +117,8 @@ export class TopArticlesComponent implements OnInit, OnDestroy {
 
   toggleSources() {
     this.detailsOpen = !this.detailsOpen;
-    console.log("toggle sources?", this.detailsOpen)
+    // console.log("toggle sources?", this.detailsOpen)
   }
-
-  // resetCurrentArticle() {
-  //   this.currentArticle = this.articles[0];
-  //   console.log("current Article", this.currentArticle)
-  // }
-
-  // setCurrentArticle(i:number) {
-  //   this.currentArticle = this.articles[i];
-  //   console.log("current Article", this.currentArticle)
-  // }
-
-  // getRandomArticle() {
-  //   let rand = Math.ceil(Math.random() * 100);
-  //   console.log("rand?", rand)
-  //   this.currentArticle = this.articles[rand];
-  //   console.log("current Article", this.currentArticle)
-  // }
 
   ngOnDestroy() {
     this.sub.unsubscribe();

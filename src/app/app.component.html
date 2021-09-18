@@ -1,19 +1,31 @@
 
-<navbar [isNavFixed$]="isNavFixed$" [isSubNavFixed$]="isSubNavFixed$"></navbar>
+<navbar 
+  [isNavFixed$]="isNavFixed$" 
+  [isSubNavFixed$]="isSubNavFixed$">
+</navbar>
 
 <div class="container-fluid" id="sub-nav-tar">
   <div 
     [class.nav-fixed]="isNavFixed$|async"
     class="row top-stories-row">
+    
     <top-articles></top-articles>
   </div>
 </div>
 
-<sub-nav [isSubNavFixed$]="isSubNavFixed$" [topic]="topic"></sub-nav>
+<sub-nav 
+  [isSubNavFixed$]="isSubNavFixed$" 
+  [topic]="topic">
+</sub-nav>
 
 <div class="container-fluid news-feed-container">
   <div class="news-feed-row">
-    <news-feed [topic]="topic" [isSubNavFixed$]="isSubNavFixed$"></news-feed>
+    
+    <news-feed 
+      [topic]="topic" 
+      [canLoadTopics]="canLoadTopics"
+      [isSubNavFixed$]="isSubNavFixed$">
+    </news-feed>
   </div>
 </div>
 

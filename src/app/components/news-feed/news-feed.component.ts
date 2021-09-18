@@ -11,6 +11,7 @@ import { Observable, Subscription } from 'rxjs';
 export class NewsFeedComponent implements OnInit, OnDestroy, OnChanges {
 
   @Input('topic') topic: string;
+  @Input('canLoadTopics') canLoadTopics: boolean;
   @Input('isSubNavFixed$') isSubNavFixed$: Observable<boolean>;
 
   public sub: Subscription;
@@ -34,12 +35,16 @@ export class NewsFeedComponent implements OnInit, OnDestroy, OnChanges {
   constructor(private newsService: NewsService) {}
 
   ngOnInit() {
-    this.getArticlesByCategory();
   }
 
   ngOnChanges(changes: SimpleChanges) {
     console.log("changes???", changes)
-    if(changes.topic) {
+    if(changes.canLoadTopics) {
+      if(this.canLoadTopics === true) {
+        this.getArticlesByCategory();
+      }
+    }
+    if(this.canLoadTopics === true && changes.topic) {
       this.getArticlesByCategory();
     }
   }
@@ -51,8 +56,7 @@ export class NewsFeedComponent implements OnInit, OnDestroy, OnChanges {
       if(news && news.articles) {
         this.articles = news.articles;
         this.preLoadImages();
-        this.loadingArticles = false;
-        console.log("topic articles?", this.articles)
+        // console.log("topic articles?", this.topic, this.articles,"can load", this.canLoadTopics)
       } else {
         this.loadingArticles = false;
         console.error("no articles??", news)
@@ -60,12 +64,34 @@ export class NewsFeedComponent implements OnInit, OnDestroy, OnChanges {
     });
   }
 
+  preLoadImages2() {
+    for(let i = 0; i < this.articles.length; i++) {
+      let img = <HTMLImageElement>document.getElementById(`img${i}`);
+      img.onerror = () => {
+        img.src = 'https://source.unsplash.com/random';
+        console.log("pre-load images?", img)
+      }
+      img.onload = () => {
+        if(!img.complete) {
+          img.src = 'assets/Fake-News.jpg';
+          console.log("pre-load images?", img)
+        } else {
+          console.log("pre-load images?", img)
+          return;
+        }
+      }
+    }
+  }
+
   preLoadImages() {
     for(let i = 0; i < this.articles.length; i++) {
       let img = new Image();
       img.src = this.articles[i].urlToImage;
+      img.style.display = 'none';
+      document.body.appendChild(img);
       // console.log("pre-load images?", img, i+1)
     }
+    this.loadingArticles = false;
   }
 
   ngOnDestroy() {
