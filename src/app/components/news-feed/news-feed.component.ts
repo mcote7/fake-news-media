@@ -2,11 +2,13 @@ import { Component, Input, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@
 import { NewsService } from 'src/app/services/news.service';
 import { Article } from 'src/models/article';
 import { Observable, Subscription } from 'rxjs';
+import { listAnimationWrapCard, listAnimationItemCard } from 'src/animations/anime';
 
 @Component({
   selector: 'news-feed',
   templateUrl: './news-feed.component.html',
-  styleUrls: ['./news-feed.component.scss']
+  styleUrls: ['./news-feed.component.scss'],
+  animations: [listAnimationWrapCard,listAnimationItemCard]
 })
 export class NewsFeedComponent implements OnInit, OnDestroy, OnChanges {
 
@@ -38,7 +40,7 @@ export class NewsFeedComponent implements OnInit, OnDestroy, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    console.log("changes???", changes)
+    // console.log("changes???", changes)
     if(changes.canLoadTopics) {
       if(this.canLoadTopics === true) {
         this.getArticlesByCategory();
@@ -62,25 +64,6 @@ export class NewsFeedComponent implements OnInit, OnDestroy, OnChanges {
         console.error("no articles??", news)
       }
     });
-  }
-
-  preLoadImages2() {
-    for(let i = 0; i < this.articles.length; i++) {
-      let img = <HTMLImageElement>document.getElementById(`img${i}`);
-      img.onerror = () => {
-        img.src = 'https://source.unsplash.com/random';
-        console.log("pre-load images?", img)
-      }
-      img.onload = () => {
-        if(!img.complete) {
-          img.src = 'assets/Fake-News.jpg';
-          console.log("pre-load images?", img)
-        } else {
-          console.log("pre-load images?", img)
-          return;
-        }
-      }
-    }
   }
 
   preLoadImages() {

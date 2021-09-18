@@ -11,9 +11,10 @@
   .card {
     border-radius: 0.5rem;
     background-color: $bg-color;
-    box-shadow: 2px 2px 8px 0px $box-shadow-color;
+    box-shadow: 2px 2px 4px -1px $box-shadow-color;
     
     img  {
+      max-height: 16rem;
       border-radius: 0.5rem 0.5rem 0 0;
       border-top: 0.25rem solid $newRed;
     }

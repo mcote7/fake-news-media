@@ -1,5 +1,6 @@
 
 <div 
+  [@listAnimationWrapCard]="articles.length"
   [class.isFixed]="isSubNavFixed$|async"
   class="row news-feed-row">
   <ng-container *ngIf="loadingArticles">
@@ -7,11 +8,20 @@
   </ng-container>
   <ng-container *ngIf="!loadingArticles">
     <div 
+      @listAnimationItemCard
       *ngFor="let article of articles; index as i"
-      class="col-lg-3 col-md-4 px-3 py-5">
-  
-      <div class="card">
-        <img id="img{{i}}" class="mb-2" src="{{article.urlToImage}}" alt="news">
+      class="col-lg-3 col-md-4 px-3 py-5 d-flex justify-content-center align-items-center">
+      
+      <div 
+        class="card">
+        
+        <img 
+          id="img{{i}}" 
+          class="mb-2 img-tag" 
+          src="{{article.urlToImage}}" 
+          alt="Fake-News" 
+          onerror="this.src='assets/Fake-News.jpg'">
+        
         <h4 class="px-2">{{article.title}}</h4>
         <p class="px-3">{{article.description}}</p>
       </div>

@@ -24,10 +24,10 @@ export class AppComponent implements OnInit {
     this.router.queryParamMap.subscribe(params => {
       if(params.get('topic') !== null) {
         this.topic = params.get('topic');
-        console.log("YES topic?", this.topic)
+        // console.log("YES topic?", this.topic)
       } else {
         this.topic = 'technology';
-        console.log("NO topic?", this.topic)
+        // console.log("NO topic?", this.topic)
       }
       // console.log("?topic?", this.topic)
     });
@@ -52,7 +52,7 @@ export class AppComponent implements OnInit {
       }
       if(this.isInViewport(this.loadTopicTar)) {
         this.canLoadTopics = true;
-        console.log("sub in view !!!!!", this.isInViewport(this.loadTopicTar))
+        // console.log("sub in view !!!!!", this.isInViewport(this.loadTopicTar))
       }
       if(subTar > sub) {
         this.isSubNavFixed$ = of(true);
@@ -70,7 +70,7 @@ export class AppComponent implements OnInit {
 
   isInViewport(elem: HTMLElement): boolean {
     let bounding = elem.getBoundingClientRect();
-    console.log("b?", bounding)
+    // console.log("b?", bounding)
     return (
         bounding.top >= 0 &&
         bounding.left >= 0 &&
