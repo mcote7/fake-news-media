@@ -35,6 +35,7 @@ export class NewsFeedComponent implements OnInit, OnDestroy, OnChanges {
   public articles: Article[] = [];
 
   public myColor:string = '#ffeb3b26';
+  public tooltipDelay:number = 1000;
 
   constructor(private newsService: NewsService) {}
 

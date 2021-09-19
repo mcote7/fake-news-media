@@ -24,6 +24,7 @@ import {
   import { DragDropModule } from '@angular/cdk/drag-drop';
 
   import { MatRippleModule } from '@angular/material/core';
+  import { MatTooltipModule } from '@angular/material/tooltip';
 
 
 @NgModule({
@@ -45,6 +46,7 @@ import {
     MatIconModule, 
     DragDropModule, 
     MatRippleModule, 
+    MatTooltipModule, 
   ],
   providers: [
     NewsService,

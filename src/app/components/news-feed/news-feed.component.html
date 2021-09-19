@@ -4,7 +4,11 @@
   [class.isFixed]="isSubNavFixed$|async"
   class="row news-feed-row">
   <ng-container *ngIf="loadingArticles">
-    <div class="loading" style="height: 100vh;color: red;">Loading</div>
+    <div class="loading">
+      <div class="loadingio-spinner-ellipsis-jrxqq3gmbcf"><div class="ldio-kbmyi7gnkef">
+        <div></div><div></div><div></div><div></div><div></div>
+      </div></div>
+    </div>
   </ng-container>
   <ng-container *ngIf="!loadingArticles">
     <div 
@@ -13,6 +17,9 @@
       class="col-lg-3 col-md-4 px-3 py-5 d-flex justify-content-center align-items-center">
       <!-- mat-card -->
       <mat-card 
+        matTooltip="{{article.content}}"
+        [matTooltipShowDelay]="tooltipDelay"
+        matTooltipClass="custom-tooltip"
         class="news-card">
         
         <mat-card-header class="d-flex">
@@ -41,17 +48,17 @@
         </mat-card-content>
         
         <mat-card-actions>
-          <button mat-mini-fab style="background-color: #f50035;">
-            <a href="{{article.url}}" title="open full article" target="_blank" rel="noopener noreferrer" style="color: #fff; text-decoration: none;">
+          <button mat-mini-fab style="background-color: #f50035;" matTooltip="Open full article">
+            <a href="{{article.url}}" target="_blank" rel="noopener noreferrer" style="color: #fff; text-decoration: none;">
               <mat-icon aria-hidden="false" aria-label="open full article">open_in_new</mat-icon>
             </a>
           </button>
-          <button mat-mini-fab color="#fff" (click)="isBookmarked = !isBookmarked">
-            <mat-icon *ngIf="!isBookmarked" aria-hidden="false" aria-label="bookmark article" title="bookmark article">bookmark_border</mat-icon>
-            <mat-icon *ngIf="isBookmarked" aria-hidden="false" aria-label="bookmark article" title="bookmarked" style="color: #FFEB3B; -webkit-text-stroke: 2px #f50035;">bookmark</mat-icon>
+          <button mat-mini-fab color="#fff" (click)="isBookmarked = !isBookmarked" matTooltip="{{isBookmarked ? 'Bookmarked' : 'Bookmark article'}}">
+            <mat-icon *ngIf="!isBookmarked" aria-hidden="false" aria-label="bookmark article">bookmark_border</mat-icon>
+            <mat-icon *ngIf="isBookmarked" aria-hidden="false" aria-label="bookmark article" style="color: #FFEB3B; -webkit-text-stroke: 2px #f50035;">bookmark</mat-icon>
           </button>
-          <button mat-mini-fab color="#fff">
-            <mat-icon aria-hidden="false" aria-label="share article" title="share article">share</mat-icon>
+          <button mat-mini-fab color="#fff" matTooltip="Share Article">
+            <mat-icon aria-hidden="false" aria-label="share article">share</mat-icon>
           </button>
         </mat-card-actions>
       </mat-card>

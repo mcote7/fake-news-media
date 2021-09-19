@@ -22,7 +22,6 @@
       *ngFor="let t of topics"
       [class.active]="topic === t.name"
       [queryParams]="{topic: t.name}"
-      title="{{t.displayName}}"
       routerLink="/">
       <mat-icon class="icon-link me-1" aria-hidden="false" aria-label="topic">{{t.icon}}</mat-icon>
       <span>{{t.displayName}}</span>
