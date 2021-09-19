@@ -18,6 +18,7 @@ nav {
   
   .scroll-left, .scroll-right {
     position: absolute;
+    z-index: 999999;
     height: 100%;
     width: 1rem;
     margin: 0;
@@ -134,6 +135,9 @@ nav {
         border-radius: 50%;
         background-color: #fff;
         box-shadow: 0px 0px 0px 2px $newRed;
+        @media only screen and (max-width: 970px) {
+          display: none;
+        }
       }
     }
   }
