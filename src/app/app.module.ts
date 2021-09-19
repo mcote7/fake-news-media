@@ -16,17 +16,9 @@ import { SubNavComponent } from './components/sub-nav/sub-nav.component';
 
 // add to imports
 import { 
-    MatCard, 
     MatCardModule, 
-    MatCardActions, 
-    MatCardAvatar, 
-    MatCardFooter, 
-    MatCardImage, 
-    MatCardTitleGroup, 
-    MatCardTitle, 
-    MatCardSubtitle, 
-    MatCardHeader,  
-    MatCardContent, 
+    MatButtonModule, 
+    MatIconModule, 
   } from '@angular/material';
 
 
@@ -44,17 +36,9 @@ import {
     BrowserAnimationsModule,
     AppRoutingModule,
     HttpClientModule,
-    MatCard, 
     MatCardModule, 
-    MatCardActions, 
-    MatCardAvatar, 
-    MatCardFooter, 
-    MatCardImage, 
-    MatCardTitleGroup, 
-    MatCardTitle, 
-    MatCardSubtitle, 
-    MatCardHeader,  
-    MatCardContent, 
+    MatButtonModule, 
+    MatIconModule, 
   ],
   providers: [
     NewsService,

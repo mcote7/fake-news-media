@@ -11,20 +11,48 @@
       @listAnimationItemCard
       *ngFor="let article of articles; index as i"
       class="col-lg-3 col-md-4 px-3 py-5 d-flex justify-content-center align-items-center">
-      
-      <div 
-        class="card">
+      <!-- mat-card -->
+      <mat-card 
+        class="news-card">
         
-        <img 
+        <mat-card-header class="d-flex">
+          <small class="pub-date">
+            <mat-icon class="today" aria-hidden="false" aria-label="todays news" title="todays news">language</mat-icon>
+            &nbsp;{{article.source.name}}
+          </small>
+          <small class="pub-date ms-auto">
+            {{article.publishedAt | date: 'M/dd/yyyy'}}&nbsp;
+            <mat-icon class="today" aria-hidden="false" aria-label="todays news" title="todays news">today</mat-icon>
+          </small>
+        </mat-card-header>
+        
+        <img mat-card-image
           id="img{{i}}" 
           class="mb-2 img-tag" 
           src="{{article.urlToImage}}" 
           alt="Fake-News" 
           onerror="this.src='assets/Fake-News.jpg'">
         
-        <h4 class="px-2">{{article.title}}</h4>
-        <p class="px-3">{{article.description}}</p>
-      </div>
+        <mat-card-content>
+          <mat-card-title-group>
+            <mat-card-title>{{article.title}}</mat-card-title>
+            <mat-card-subtitle>{{article.description}}</mat-card-subtitle>
+          </mat-card-title-group>
+        </mat-card-content>
+        
+        <mat-card-actions>
+          <button mat-mini-fab color="primary">
+            <mat-icon aria-hidden="false" aria-label="open full article" title="open full article">open_in_new</mat-icon>
+          </button>
+          <button mat-mini-fab color="#fff">
+            <mat-icon aria-hidden="false" aria-label="bookmark article" title="bookmark article">turned_in_not</mat-icon>
+          </button>
+          <button mat-mini-fab color="#fff">
+            <mat-icon aria-hidden="false" aria-label="share article" title="share article">share</mat-icon>
+          </button>
+        </mat-card-actions>
+      </mat-card>
+      <!-- 🃏 -->
     </div>
   </ng-container>
 </div>

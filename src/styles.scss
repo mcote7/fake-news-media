@@ -1,4 +1,4 @@
-
+@import './SCSS/index.scss';
 // Custom Theming for Angular Material
 // For more information: https://material.angular.io/guide/theming
 @import '~@angular/material/theming';
@@ -38,3 +38,13 @@ body {
 }
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+.mat-mini-fab .mat-button-wrapper {
+  display: flex!important;
+  padding: 0!important;
+}
+
+.mat-card-header-text {
+  margin: 0!important;
+}

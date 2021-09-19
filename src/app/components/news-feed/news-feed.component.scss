@@ -7,16 +7,78 @@
   &.isFixed {
     padding-top: 24rem;
   }
-  
-  .card {
-    border-radius: 0.5rem;
-    background-color: $bg-color;
-    box-shadow: 2px 2px 4px -1px $box-shadow-color;
+
+  // mat override 
+
+  .mat-card {
+    background: $bg-color!important;
+    transition: 280ms cubic-bezier(.4,0,.2,1)!important;
+    backface-visibility: hidden!important;
+    &:hover {
+      transform: translateY(-0.25rem) translateZ(1000px)!important;
+      box-shadow: 
+        0px 1px 1px -1px rgba(0 ,0 ,0 , 0.2), 
+        0px 1px 1px 0px rgba(0 ,0 ,0 , 0.14), 
+        0px 4px 4px 0px rgba(0 ,0 ,0 , 0.12)!important;
+        .mat-card-image {
+          filter: grayscale(0%)!important;
+        }
+    }
+  }
+
+  .pub-date {
+    display: flex;
+    align-items: center;
     
-    img  {
-      max-height: 16rem;
-      border-radius: 0.5rem 0.5rem 0 0;
-      border-top: 0.25rem solid $newRed;
+    .today {
+      font-size: 0.875rem;
+      height: 0.875rem;
+      width: 0.875rem;
+    }
+  }
+
+  .mat-card-header {
+    margin-left: -16px!important;
+    margin-right: -16px!important;
+    background: #000!important;
+    color: #fff!important;
+    margin-top: -16px!important;
+    border-top-left-radius: inherit!important;
+    border-top-right-radius: inherit!important;
+    padding: 0 0.5rem!important;
+    padding-top: 0.125rem!important;
+    margin-bottom: -0.125rem!important;
+    border-bottom: 0.125rem solid #000!important;
+  }
+
+  .mat-card-image {
+    max-height: 14rem!important;
+    filter: grayscale(77%)!important;
+    transition: 280ms cubic-bezier(.4,0,.2,1)!important;
+  }
+
+  .mat-card-title {
+    line-height: normal!important;
+  }
+  
+  .mat-card-subtitle {
+    margin-bottom: 0!important;
+  }
+
+  .mat-card-actions {
+    display: flex!important;
+    justify-content: flex-end!important;
+    padding-bottom: 0.5rem!important;
+    padding-top: 0!important;
+  }
+  
+  .mat-mini-fab {
+    transition: 280ms cubic-bezier(.4,0,.2,1)!important;
+    &:hover {
+      box-shadow: 
+        -1px 3px 2px -1px rgb(0 ,0 ,0 , 0.2), 
+        0px 2px 4px 0px rgb(0 ,0 ,0 , 0.14),
+        0px 1px 2px 0px rgb(0 ,0 ,0 , 0.12);
     }
   }
 }
