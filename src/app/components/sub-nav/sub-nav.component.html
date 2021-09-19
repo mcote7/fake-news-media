@@ -18,9 +18,7 @@
   <div id="scroll-x-el" cdkDropList cdkDropListOrientation="horizontal" (cdkDropListDropped)="drop($event)">
     <a 
       cdkDrag
-      (dragstart)="prevDef($event)"
-      (drag)="prevDef($event)"
-      (dragend)="prevDef($event)"
+      (mousedown)="prevDef($event)"
       *ngFor="let t of topics"
       [class.active]="topic === t.name"
       [queryParams]="{topic: t.name}"

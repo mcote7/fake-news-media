@@ -23,6 +23,8 @@ import {
 
   import { DragDropModule } from '@angular/cdk/drag-drop';
 
+  import { MatRippleModule } from '@angular/material/core';
+
 
 @NgModule({
   declarations: [
@@ -42,6 +44,7 @@ import {
     MatButtonModule, 
     MatIconModule, 
     DragDropModule, 
+    MatRippleModule, 
   ],
   providers: [
     NewsService,

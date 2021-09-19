@@ -17,9 +17,9 @@
 
 small {
   position: fixed;
+  display: flex;
   bottom: 0;
-  left: 0.25rem;
-  background-color: $newRed;
+  background-color: #f50035;
   padding: 0 0.25rem;
   color: #fff;
   border-radius: 0.25rem 0.25rem 0 0;
@@ -30,8 +30,19 @@ small {
     position: absolute;
     height: 2rem;
     width: 2rem;
-    top: -1rem;
-    background: $newRed;
+    top: -0.75rem;
+    left: -0.25rem;
+    background: #f50035;
     z-index: -1;
+    border-radius: 50%;
+  }
+  span {
+    position: absolute;
+    bottom: 0.15rem;
+    font-size: 1.15rem;
+    left: 0.125rem;
+  }
+  div {
+    margin-left: 1.5rem;
   }
 }

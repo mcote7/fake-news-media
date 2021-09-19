@@ -34,6 +34,8 @@ export class NewsFeedComponent implements OnInit, OnDestroy, OnChanges {
   public loadingArticles: boolean;
   public articles: Article[] = [];
 
+  public myColor:string = '#ffeb3b26';
+
   constructor(private newsService: NewsService) {}
 
   ngOnInit() {

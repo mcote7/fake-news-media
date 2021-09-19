@@ -57,6 +57,7 @@ export class SubNavComponent implements OnInit, OnDestroy {
   public intervalA: any;
   public intervalB: any;
 
+
   constructor() { }
 
   ngOnInit() {
@@ -100,7 +101,7 @@ export class SubNavComponent implements OnInit, OnDestroy {
   }
 
   prevDef(e: Event) {
-    e.stopPropagation();
     e.preventDefault();
+    e.stopPropagation();
   }
 }
