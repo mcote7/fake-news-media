@@ -147,10 +147,10 @@
         .mob-nav {
           
           &.show {
-            position: absolute;
+            position: fixed;
             z-index: 9999;
             right: 0;
-            top: 3rem;
+            top: 8rem;
             flex-direction: column;
             padding: 1rem;
             @include center-all();

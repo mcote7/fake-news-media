@@ -1,15 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { fromEvent, Observable, of } from 'rxjs';
 import { map, throttleTime } from 'rxjs/operators';
 
-// got test
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, AfterViewInit {
 
   public scroll$ = fromEvent(document, 'scroll');
   public subNavTar: HTMLElement;
@@ -29,7 +29,6 @@ export class AppComponent implements OnInit {
         this.topic = 'technology';
         // console.log("NO topic?", this.topic)
       }
-      // console.log("?topic?", this.topic)
     });
   }
   
@@ -50,10 +49,6 @@ export class AppComponent implements OnInit {
       } else {
         this.isNavFixed$ = of(false);
       }
-      if(this.isInViewport(this.loadTopicTar)) {
-        this.canLoadTopics = true;
-        // console.log("sub in view !!!!!", this.isInViewport(this.loadTopicTar))
-      }
       if(subTar > sub) {
         this.isSubNavFixed$ = of(true);
       } else {
@@ -62,20 +57,25 @@ export class AppComponent implements OnInit {
     });
   }
 
+  ngAfterViewInit() {
+    const subNavTar = document.querySelector('#sub-nav');
+    let observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.intersectionRatio > 0) {
+          console.log('in the view');
+          this.canLoadTopics = true;
+          observer.unobserve(entry.target);
+        } else {
+          console.log('out of view');
+        }
+      });
+    });
+    observer.observe(subNavTar);
+  }
+
   calculateScrollPercent(element: HTMLElement) {
     const { scrollTop, scrollHeight, clientHeight } = element;
     // console.log("el", element)
     return (scrollTop / (scrollHeight - clientHeight)) * 100;
-  }
-
-  isInViewport(elem: HTMLElement): boolean {
-    let bounding = elem.getBoundingClientRect();
-    // console.log("b?", bounding)
-    return (
-        bounding.top >= 0 &&
-        bounding.left >= 0 &&
-        bounding.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
-        bounding.right <= (window.innerWidth || document.documentElement.clientWidth)
-    );
   }
 }
