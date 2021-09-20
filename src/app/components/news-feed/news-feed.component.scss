@@ -12,6 +12,7 @@
   // mat override 
 
   .mat-card {
+    touch-action: auto!important;
     background: $bg-color!important;
     transition: 280ms cubic-bezier(.4,0,.2,1)!important;
     backface-visibility: hidden!important;
