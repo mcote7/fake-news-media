@@ -48,3 +48,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .mat-card-header-text {
   margin: 0!important;
 }
+
+[matTooltip] {
+  touch-action: auto!important;
+}
