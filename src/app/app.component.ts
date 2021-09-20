@@ -40,8 +40,8 @@ export class AppComponent implements OnInit, AfterViewInit {
       // tap(console.log) 
     );
     this.progress$.subscribe(percent => {
-      this.loadTopicTar = document.getElementById('sub-nav');
-      this.subNavTar = document.getElementById('sub-nav-tar');
+      this.loadTopicTar = <HTMLElement>document.getElementById('sub-nav');
+      this.subNavTar = <HTMLElement>document.getElementById('sub-nav-tar');
       let subTar = document.documentElement.scrollTop + 68;  // 68 = height of top-nav;
       const sub = this.subNavTar.offsetHeight;
       if(percent > 1) {
@@ -58,7 +58,7 @@ export class AppComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
-    const subNavTar = document.querySelector('#sub-nav');
+    const subNavTar = <HTMLElement>document.querySelector('#sub-nav');
     let observer = new IntersectionObserver(entries => {
       entries.forEach(entry => {
         if (entry.intersectionRatio > 0) {

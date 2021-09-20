@@ -14,7 +14,7 @@
     <div 
       @listAnimationItemCard
       *ngFor="let article of articles; index as i; let isBookmarked = false"
-      class="col-lg-3 col-md-4 px-3 py-5 d-flex justify-content-center align-items-center">
+      class="col-lg-3 col-md-4 px-3 py-5 d-flex justify-content-center align-items-start">
       <!-- mat-card -->
       <mat-card 
         matTooltip="{{article.content}}"

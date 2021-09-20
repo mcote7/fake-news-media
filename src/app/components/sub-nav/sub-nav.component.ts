@@ -61,8 +61,14 @@ export class SubNavComponent implements OnInit, OnDestroy {
   constructor() { }
 
   ngOnInit() {
-    this.subNav = document.getElementById('scroll-x-el');
+    this.subNav = <HTMLElement>document.getElementById('scroll-x-el');
     // console.log('sub nav?', this.subNav)
+  }
+
+  scrollToTop() {
+    let tar = document.getElementById('top-tar').offsetTop;
+    console.log(tar)
+    window.scrollTo({top: tar, behavior: 'auto'});
   }
 
   // GET SCROLL EL > CLICK LEFT = 

@@ -19,6 +19,7 @@
     <a 
       cdkDrag
       (mousedown)="prevDef($event)"
+      (click)="scrollToTop($event)"
       *ngFor="let t of topics"
       [class.active]="topic === t.name"
       [queryParams]="{topic: t.name}"
