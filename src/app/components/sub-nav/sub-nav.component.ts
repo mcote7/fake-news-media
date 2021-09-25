@@ -14,7 +14,6 @@ export class SubNavComponent implements OnInit, OnDestroy {
   @Input('isSubNavFixed$') isSubNavFixed$: Observable<boolean>;
   @Input('topic') topic: string;
 
-
   public topics: any[] = [
     {
       name: "technology",
@@ -34,7 +33,7 @@ export class SubNavComponent implements OnInit, OnDestroy {
     {
       name: "general",
       displayName: "General",
-      icon: "travel_explore"
+      icon: "map"
     },
     {
       name: "health",

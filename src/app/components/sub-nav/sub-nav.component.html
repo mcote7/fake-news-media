@@ -23,8 +23,11 @@
       *ngFor="let t of topics"
       [class.active]="topic === t.name"
       [queryParams]="{topic: t.name}"
-      routerLink="/">
-      <mat-icon class="icon-link me-1" aria-hidden="false" aria-label="topic">{{t.icon}}</mat-icon>
+      routerLink="/"
+      >
+      <mat-icon 
+        [class.material-icons-two-tone]="topic === t.name"
+        class="icon-link me-1" aria-hidden="false" aria-label="topic">{{t.icon}}</mat-icon>
       <span>{{t.displayName}}</span>
       <div class="example-handle" cdkDragHandle>
         <svg width="1.25rem" fill="currentColor" viewBox="0 0 24 24">
