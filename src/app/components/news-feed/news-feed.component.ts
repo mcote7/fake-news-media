@@ -16,6 +16,8 @@ export class NewsFeedComponent implements OnInit, OnDestroy, OnChanges {
   @Input('canLoadTopics') canLoadTopics: boolean;
   @Input('isSubNavFixed$') isSubNavFixed$: Observable<boolean>;
 
+  public toolhide = 10000;
+
   public sub: Subscription;
   public defaultArticle: Article = {
     title: '',

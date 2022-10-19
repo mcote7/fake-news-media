@@ -11,6 +11,7 @@
     </div>
   </ng-container>
   <ng-container *ngIf="!loadingArticles">
+    <!-- dont define let bookmarked here make article.bookmarked field in obj -->
     <div 
       @listAnimationItemCard
       *ngFor="let article of articles; index as i; let isBookmarked = false"
@@ -19,6 +20,7 @@
       <mat-card 
         matTooltip="{{article.content}}"
         [matTooltipShowDelay]="tooltipDelay"
+        [matTooltipHideDelay]="toolhide"
         matTooltipClass="custom-tooltip"
         class="news-card">
         

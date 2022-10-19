@@ -25,6 +25,7 @@ import {
 
   import { MatRippleModule } from '@angular/material/core';
   import { MatTooltipModule } from '@angular/material/tooltip';
+import { TestPipe } from './pipes/test.pipe';
 
 
 @NgModule({
@@ -35,6 +36,7 @@ import {
     TopArticlesComponent,
     SpeedPipe,
     SubNavComponent,
+    TestPipe,
   ],
   imports: [
     BrowserModule,
