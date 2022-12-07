@@ -1,70 +1,69 @@
+<div [@listAnimationWrapCard]="articles.length" [class.isFixed]="isSubNavFixed$|async" class="row news-feed-row">
+    <ng-container *ngIf="loadingArticles">
+        <div class="loading">
+            <div class="loadingio-spinner-ellipsis-jrxqq3gmbcf">
+                <div class="ldio-kbmyi7gnkef">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+            </div>
+        </div>
+    </ng-container>
+    <ng-container *ngIf="!loadingArticles">
+        <!-- dont define let bookmarked here make article.bookmarked field in obj -->
+        <div @listAnimationItemCard *ngFor="let article of articles; index as i; let isBookmarked = false"
+            class="col-lg-3 col-md-4 px-3 py-5 d-flex justify-content-center align-items-start">
+            <!-- mat-card -->
+            <mat-card matTooltip="{{article.content}}" [matTooltipShowDelay]="tooltipDelay"
+                [matTooltipHideDelay]="toolhide" matTooltipClass="custom-tooltip" class="news-card">
 
-<div 
-  [@listAnimationWrapCard]="articles.length"
-  [class.isFixed]="isSubNavFixed$|async"
-  class="row news-feed-row">
-  <ng-container *ngIf="loadingArticles">
-    <div class="loading">
-      <div class="loadingio-spinner-ellipsis-jrxqq3gmbcf"><div class="ldio-kbmyi7gnkef">
-        <div></div><div></div><div></div><div></div><div></div>
-      </div></div>
-    </div>
-  </ng-container>
-  <ng-container *ngIf="!loadingArticles">
-    <!-- dont define let bookmarked here make article.bookmarked field in obj -->
-    <div 
-      @listAnimationItemCard
-      *ngFor="let article of articles; index as i; let isBookmarked = false"
-      class="col-lg-3 col-md-4 px-3 py-5 d-flex justify-content-center align-items-start">
-      <!-- mat-card -->
-      <mat-card 
-        matTooltip="{{article.content}}"
-        [matTooltipShowDelay]="tooltipDelay"
-        [matTooltipHideDelay]="toolhide"
-        matTooltipClass="custom-tooltip"
-        class="news-card">
-        
-        <mat-card-header class="d-flex">
-          <small class="pub-date">
-            <mat-icon class="today" aria-hidden="false" aria-label="todays news" title="todays news">language</mat-icon>
-            &nbsp;{{article.source.name}}
-          </small>
-          <small class="pub-date ms-auto">
-            {{article.publishedAt | date: 'M/dd/yyyy'}}&nbsp;
-            <mat-icon class="today" aria-hidden="false" aria-label="todays news" title="todays news">today</mat-icon>
-          </small>
-        </mat-card-header>
-        
-        <img mat-card-image 
-          id="img{{i}}" 
-          class="mb-2 img-tag" 
-          src="{{article.urlToImage}}" 
-          alt="Fake-News" 
-          onerror="this.src='assets/Fake-News.jpg'">
-        
-        <mat-card-content>
-          <mat-card-title-group>
-            <mat-card-title matRipple [matRippleColor]="myColor" style="border-radius: 0.5rem; user-select: none;">{{article.title}}</mat-card-title>
-            <mat-card-subtitle>{{article.description}}</mat-card-subtitle>
-          </mat-card-title-group>
-        </mat-card-content>
-        
-        <mat-card-actions>
-          <button mat-mini-fab style="background-color: #f50035;" matTooltip="Open full article">
-            <a href="{{article.url}}" target="_blank" rel="noopener noreferrer" style="color: #fff; text-decoration: none;">
-              <mat-icon aria-hidden="false" aria-label="open full article">open_in_new</mat-icon>
-            </a>
-          </button>
-          <button mat-mini-fab color="#fff" (click)="isBookmarked = !isBookmarked" matTooltip="{{isBookmarked ? 'Bookmarked' : 'Bookmark article'}}">
-            <mat-icon *ngIf="!isBookmarked" aria-hidden="false" aria-label="bookmark article">bookmark_border</mat-icon>
-            <mat-icon *ngIf="isBookmarked" aria-hidden="false" aria-label="bookmark article" style="color: #FFEB3B; -webkit-text-stroke: 2px #f50035;">bookmark</mat-icon>
-          </button>
-          <button mat-mini-fab color="#fff" matTooltip="Share Article">
-            <mat-icon aria-hidden="false" aria-label="share article">share</mat-icon>
-          </button>
-        </mat-card-actions>
-      </mat-card>
-      <!-- 🃏 -->
-    </div>
-  </ng-container>
+                <mat-card-header class="d-flex">
+                    <small class="pub-date">
+                        <mat-icon class="today" aria-hidden="false" aria-label="todays news" title="todays news">
+                            language</mat-icon>
+                        &nbsp;{{article.source.name}}
+                    </small>
+                    <small class="pub-date ms-auto">
+                        {{article.publishedAt | date: 'M/dd/yyyy'}}&nbsp;
+                        <mat-icon class="today" aria-hidden="false" aria-label="todays news" title="todays news">today
+                        </mat-icon>
+                    </small>
+                </mat-card-header>
+
+                <img mat-card-image id="img{{i}}" class="mb-2 img-tag" src="{{article.urlToImage}}" alt="Fake-News"
+                    onerror="this.src='assets/Fake-News.jpg'">
+
+                <mat-card-content>
+                    <mat-card-title-group>
+                        <mat-card-title matRipple [matRippleColor]="myColor"
+                            style="border-radius: 0.5rem; user-select: none;">{{article.title}}</mat-card-title>
+                        <mat-card-subtitle>{{article.description}}</mat-card-subtitle>
+                    </mat-card-title-group>
+                </mat-card-content>
+
+                <mat-card-actions>
+                    <button mat-mini-fab style="background-color: #f50035;" matTooltip="Open full article">
+                        <a href="{{article.url}}" target="_blank" rel="noopener noreferrer"
+                            style="color: #fff; text-decoration: none;">
+                            <mat-icon aria-hidden="false" aria-label="open full article">open_in_new</mat-icon>
+                        </a>
+                    </button>
+                    <button mat-mini-fab color="#fff" (click)="isBookmarked = !isBookmarked"
+                        matTooltip="{{isBookmarked ? 'Bookmarked' : 'Bookmark article'}}">
+                        <mat-icon *ngIf="!isBookmarked" aria-hidden="false" aria-label="bookmark article">
+                            bookmark_border</mat-icon>
+                        <mat-icon *ngIf="isBookmarked" aria-hidden="false" aria-label="bookmark article"
+                            style="color: #FFEB3B; -webkit-text-stroke: 2px #f50035;">bookmark</mat-icon>
+                    </button>
+                    <button mat-mini-fab color="#fff" matTooltip="Share Article">
+                        <mat-icon aria-hidden="false" aria-label="share article">share</mat-icon>
+                    </button>
+                </mat-card-actions>
+            </mat-card>
+            <!-- 🃏 -->
+        </div>
+    </ng-container>
 </div>
